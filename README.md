@@ -5,6 +5,7 @@ In solving this problem, I focused on building a simple, scalable solution with 
 
 I chose to implement a self-referencing model for the Employee entity, leveraging TypeORM's @ManyToOne and @OneToMany decorators to define a parent-child relationship between employees (supervisor and subordinates). This allows for flexible, hierarchical data representation without the need for complex database structures.
 The employee hierarchy is represented recursively, allowing employees to have children and for each child employee to potentially have their own children.
+
 Simple Implementation:
 
 The solution is kept simple by focusing on a single core functionality: creating employees and fetching their hierarchy.
@@ -25,23 +26,11 @@ The design supports easy scalability through horizontal scaling and database opt
 
 
 
- **D. Deployment Process**
-Although deployment is not required as part of the task, I’ve provided a clear deployment process that can be followed in a production environment.
-
-**Dockerization:**
-
-The application has been containerized using Docker. A Dockerfile and docker-compose.yml file are provided to facilitate building and running the application in different environments.
-This ensures that the application runs consistently, regardless of the underlying infrastructure or development environment.
-Environment Configuration:
-
-Environment variables are used for configuration (e.g., database connection strings, JWT secret keys). These are stored securely and can be injected at runtime through Docker or a cloud environment.
-
-
 **Deployment Instructions:**
 
 To deploy the application:
 Clone the repository.
 Configure the .env file with appropriate environment variables (e.g., database connection strings, API keys).
-Build the Docker image using docker build -t employee-hierarchy ..
+Build the Docker image using docker build -t employee-hierarchy.
 Run the application with docker-compose up.
 For production, use Kubernetes or a similar orchestration platform for better scalability and management.
